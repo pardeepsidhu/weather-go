@@ -1,7 +1,11 @@
+import { error } from 'console';
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 
 type Props = {}
+
+
+
 
 interface WeatherData {
   coord: Coordinates;
@@ -65,16 +69,14 @@ interface SystemInfo {
   sunset: number;
 }
 
-// 760fc9ac913e3ebe353991afe707eb15
+
 
  const Weather = (props: Props) => {
     const {lat,lon}=useParams()
     const [weatherData, setWeatherData] = useState<WeatherData | null>(null)
     const [background,setBackground]=useState<string >("")
-    const [d,setD]=useState({
-      a:"no-repeat"
-    })
     
+  
 
     const init=()=>{
       let main=document.getElementsByClassName("weather-main-box")[0]

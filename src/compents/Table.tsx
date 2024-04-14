@@ -61,6 +61,8 @@ const Table = (props:props) => {
         console.log("feted")
     };
 
+    
+
     useEffect(() => {
         setLimit(50)
         console.log("limit")
@@ -68,6 +70,7 @@ const Table = (props:props) => {
     }, [sort]);
     useEffect(()=>{
     console.log("here length",data.length)
+    window.addEventListener("scroll",()=>props.setSuggestions([]))
     },[data])
 
     useEffect(()=>{
@@ -79,11 +82,9 @@ const Table = (props:props) => {
             let data2=staticData;
             if(props.search.length >0 && !waiting){
                 let sug=data2.filter((item)=>{
-                    // console.log(item.name.toLowerCase())
                    return item.name.toLowerCase().startsWith(props.search.toLowerCase())
                 }).map((item)=>(item.name))
                 let searchResult=data2.filter((item)=>{
-                    // console.log(item.name.toLowerCase())
                    return item.name.toLowerCase().startsWith(props.search.toLowerCase())
                 })
                 setData(searchResult)
@@ -104,7 +105,7 @@ const Table = (props:props) => {
       
     },[props.search,staticData])
     return (
-        <div className='table'>
+        <div id="table" onScroll={()=>props.setSuggestions([])} className='table'>
          <select style={{background:"gray"}} onChange={(e)=>setSort(e.target.value)} className="form-select" aria-label="Default select example">
   <option value="name" selected>Sort By</option>
   <option  value="name">City</option>
@@ -136,10 +137,11 @@ const Table = (props:props) => {
            <InfiniteScroll
             dataLength={data.length} 
             next={fetchData}
-            hasMore={data.length <100}
+            hasMore={data.length <=90 && props.search.length ===0}
             loader={ !notFound && <h4> <div className="spinner-border text-secondary" role="status">
             <span className="visually-hidden">Loading...</span>
         </div> Loading...</h4>}
+         scrollableTarget="table"
             endMessage={
                 <p style={{ textAlign: 'center' }}>
                     <b>Only 100 Results Avalible For Free</b>
@@ -148,7 +150,7 @@ const Table = (props:props) => {
         >
             { data.map((item, index) => (
                 <div className='row' key={index}>
-                    <Link className='col' onContextMenu={()=>window.open(`weather/${item.coordinates.lon}/${item.coordinates.lat}`,"_blank")} to={`weather/${item.coordinates.lon}/${item.coordinates.lat}`} >{item.name}</Link>
+                    <Link className='col' onContextMenu={()=>window.open(`weather/${item.coordinates.lon}/${item.coordinates.lat}`,"_blank")} to={`weather/${item.coordinates.lon}/${item.coordinates.lat}`} >{index+" . "+item.name}</Link>
                     <div className='col'>
                         {item.cou_name_en}
                     </div>
