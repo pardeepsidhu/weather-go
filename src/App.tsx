@@ -1,24 +1,28 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Navbar from './compents/Navbar'
+import Table from './compents/Table';
+import { BrowserRouter as Router , Routes ,Route } from 'react-router-dom';
+import  Weather  from './compents/Weather';
+import About from './compents/About';
+
+
 
 function App() {
+  const [search, setSearch] = useState<string>('');
+  const [suggestions,setSuggestions]=useState<string[]>([])
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+<Router>
+<Navbar search={search}  setSearch={setSearch} setSuggestions={setSuggestions} suggestions={suggestions} />
+<Routes>
+  <Route index  element={<Table suggestions={suggestions} setSuggestions={setSuggestions} search={search} />} />
+  <Route path='weather/:lon/:lat' element={<Weather />} />
+  <Route path='/about' element={<About />} />
+</Routes>
+</Router>
+
     </div>
   );
 }

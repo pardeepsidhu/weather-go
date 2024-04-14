@@ -1,38 +1,434 @@
 .App {
   text-align: center;
+  /* padding: 5px; */
+  /* background:#13ff00; */
+  font-weight: bold;
+  margin: 2px;
+  overflow: hidden;
+  /* background-color: red; */
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.weather-main-box{
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  padding-bottom: 12em;
+  
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+
+
+.table{
+  width: 100%;
+}
+a{
+  text-decoration: none;
+}
+.col{
+  flex: 1 0 0%;
+border: 2px solid gray;
+font-size: 1.7vw;
+overflow: hidden;
+height: 30px;
+text-decoration: none;
+display: flex;
+justify-content: center;
+align-content: center;
+}
+.row{
+  margin-left: 5px;
+  margin-right: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  background: transparent;
+}
+
+.navbar{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  background-color: gray;
+  padding: 5px;
+  margin: 1px;
+  z-index: 2;
+}
+.navbar Link{
+ text-decoration: none;
+}
+.logo{
+  margin-left: 20px;
+}
+.logo-img{
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  border: 1px solid;
+}
+
+.weather-main-box{
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+
+
+.table{
+  width: 100%;
+  background: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqFikPQDYi8G5i4OQZLTAuFq8lGUZovhwLKCc8WJYDrQ&s");
+  height: 100vh;
+  overflow-y: scroll;
+  background-position: center;
+  background-size: cover;
+}
+a{
+  text-decoration: none;
+}
+.col{
+  flex: 1 0 0%;
+border: 2px solid gray;
+font-size: 1.7vw;
+overflow: hidden;
+height: 30px;
+text-decoration: none;
+display: flex;
+justify-content: center;
+align-content: center;
+}
+.row{
+  margin-left: 5px;
+  margin-right: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  background: transparent;
+}
+
+.navbar{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  background-color: gray;
+  padding: 5px;
+  margin: 1px;
+}
+.navbar Link{
+ text-decoration: none;
+}
+.logo{
+  margin-left: 20px;
+}
+.logo-img{
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  border: 1px solid;
+}
+#toggle{
+  margin-right: 10px;
+}
+.list{
+  list-style: none;
+  display: flex;
+  gap: 25px;
+  margin: 2px;
+}
+#toggle , .navbar label {
+  display: none;
+}
+@media screen and (max-width:600px) {
+  .menu{
+    width: 100%;
+    max-height: 0;
+    overflow: hidden;
+  }
+  .list{
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+  .navbar label{
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+  }
+  #toggle:checked ~ .menu{
+    max-height: 100%;
+  }
+  .col{
+    font-size: 1.7vw;
   }
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.suggest{
+  display: flex;
+padding-left: 10px;
+background: dimgray;
+margin: 1px;
+width: 245px;
+border-radius: 5px;border: 2px solid red;
+cursor: pointer;
+}
+.suggests{
   display: flex;
   flex-direction: column;
-  align-items: center;
+  position: fixed;
+}
+.table > :not(caption) > * > * {
+  padding: 1px;
+}
+
+/* #main{
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+} */
+
+.weather-info-box{
+  width: 100%;
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;.App {
+    text-align: center;
+    padding: 5px;
+    /* background:#13ff00; */
+    font-weight: bold;
+  }
+  
+  .weather-main-box{
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+  
+  
+  
+  .table{
+    width: 100%;
+  }
+  a{
+    text-decoration: none;
+  }
+  .col{
+    flex: 1 0 0%;
+  border: 2px solid gray;
+  font-size: 1.7vw;
+  overflow: hidden;
+  height: 30px;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  }
+  .row{
+    margin-left: 5px;
+    margin-right: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    background: transparent;
+  }
+  
+  .navbar{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    background-color: gray;
+    padding: 5px;
+    margin: 1px;
+  }
+  .navbar Link{
+   text-decoration: none;
+  }
+  .logo{
+    margin-left: 20px;
+  }
+  .logo-img{
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    border: 1px solid;
+  }
+  #toggle{
+    margin-right: 10px;
+  }
+  .list{
+    list-style: none;
+    display: flex;
+    gap: 25px;
+    margin: 2px;
+  }
+  #toggle , .navbar label {
+    display: none;
+  }
+  @media screen and (max-width:600px) {
+    .menu{
+      width: 100%;
+      max-height: 0;
+      overflow: hidden;
+    }
+    .list{
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+    }
+    .navbar label{
+      display: inline-flex;
+      align-items: center;
+      cursor: pointer;
+    }
+    #toggle:checked ~ .menu{
+      max-height: 100%;
+    }
+    .col{
+      font-size: 2vw;
+    }
+  }
+  .suggest{
+    display: flex;
+  padding-left: 10px;
+  background: dimgray;
+  margin: 1px;
+  width: 245px;
+  border-radius: 5px;
+  cursor: pointer;
+  }
+  .suggests{
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+  }
+  .table > :not(caption) > * > * {
+    padding: 1px;
+  }
+  
+  /* #main{
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  } */
+  
+  .weather-info-box{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .weather-inner-box{
+    width: 40em;
+  }
+  flex-wrap: wrap;
+}
+.weather-inner-box{
+  width: 40em;
+}
+.shadow{
+  text-shadow: 1px 1px 7px gray ,-1px -1px 7px gray;
+  font-weight: bolder;
+}
+#toggle{
+  margin-right: 10px;
+}
+.list{
+  list-style: none;
+  display: flex;
+  gap: 25px;
+  margin: 2px;
+}
+#toggle , .navbar label {
+  display: none;
+}
+@media screen and (max-width:600px) {
+  .menu{
+    width: 100%;
+    max-height: 0;
+    overflow: hidden;
+  }
+  .list{
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+  .navbar label{
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+  }
+  #toggle:checked ~ .menu{
+    max-height: 100%;
+  }
+  .col{
+    font-size: 2.5vw;
+    height: 20px;
+  }
+ 
+}
+.suggest{
+  display: flex;
+padding-left: 10px;
+background: dimgray;
+margin: 1px;
+width: 245px;
+border-radius: 5px;
+cursor: pointer;
+}
+.suggests{
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+}
+.table > :not(caption) > * > * {
+  padding: 1px;
+  background: transparent;
 }
 
-.App-link {
-  color: #61dafb;
-}
+/* #main{
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+} */
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.weather-info-box{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 1;
+}
+.weather-inner-box{
+  width: 40em;
+  padding: 3px;
+}
+.background{
+  width: 100%;
+height: 100%;
+position: absolute;
+bottom: 0px;
+z-index: 0;
+top:53px;
+right: 2px;
+}
+.weather-main-box{
+  background-repeat: no-repeat;
+background-position: center;
+background-size: cover;
+background: wheat;
+overflow: hidden;
 }
