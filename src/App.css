@@ -29,7 +29,7 @@ a{
 }
 .col{
   flex: 1 0 0%;
-border: 2px solid gray;
+border: 1px solid gray;
 font-size: 1.7vw;
 overflow: hidden;
 height: 30px;
@@ -93,7 +93,7 @@ a{
 }
 .col{
   flex: 1 0 0%;
-border: 2px solid gray;
+border: 1px solid gray;
 font-size: 1.7vw;
 overflow: hidden;
 height: 30px;
@@ -220,7 +220,7 @@ cursor: pointer;
   }
   .col{
     flex: 1 0 0%;
-  border: 2px solid gray;
+  border: 1px solid gray;
   font-size: 1.7vw;
   overflow: hidden;
   height: 30px;

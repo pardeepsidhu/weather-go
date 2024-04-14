@@ -150,7 +150,7 @@ const Table = (props:props) => {
         >
             { data.map((item, index) => (
                 <div className='row' key={index}>
-                    <Link className='col' onContextMenu={()=>window.open(`weather/${item.coordinates.lon}/${item.coordinates.lat}`,"_blank")} to={`weather/${item.coordinates.lon}/${item.coordinates.lat}`} >{index+" . "+item.name}</Link>
+                    <Link className='col' onContextMenu={()=>window.open(`weather/${item.coordinates.lon}/${item.coordinates.lat}`,"_blank")} to={`weather/${item.coordinates.lon}/${item.coordinates.lat}`} >{item.name}</Link>
                     <div className='col'>
                         {item.cou_name_en}
                     </div>

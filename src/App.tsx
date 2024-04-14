@@ -6,7 +6,7 @@ import Table from './compents/Table';
 import { BrowserRouter as Router , Routes ,Route } from 'react-router-dom';
 import  Weather  from './compents/Weather';
 import About from './compents/About';
-
+import Error from './compents/Error'
 
 
 function App() {
@@ -20,6 +20,7 @@ function App() {
   <Route index  element={<Table suggestions={suggestions} setSuggestions={setSuggestions} search={search} />} />
   <Route path='weather/:lon/:lat' element={<Weather />} />
   <Route path='/about' element={<About />} />
+  <Route path='*' element={<Error />} />
 </Routes>
 </Router>
 
