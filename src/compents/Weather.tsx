@@ -69,12 +69,17 @@ interface SystemInfo {
   sunset: number;
 }
 
+type myLocation ={
+  lat:number;
+  lon:number;
+}
 
 
  const Weather = (props: Props) => {
     const {lat,lon}=useParams()
     const [weatherData, setWeatherData] = useState<WeatherData | null>(null)
     const [background,setBackground]=useState<string >("")
+    const [position,setPosition]=useState<myLocation | null>(null)
     
   
 
@@ -107,6 +112,9 @@ interface SystemInfo {
     useEffect(()=>{
         getData()
     },[])
+   
+      
+ 
   return (
     <div  style={{height:"100wh",backgroundRepeat:"no-repeat",backgroundSize:"cover",backgroundPosition:"center"}} className='weather-main-box'>
       <img className='background' src={background} />
@@ -127,16 +135,30 @@ interface SystemInfo {
   <path d="M4.176 11.032a.5.5 0 0 1 .292.643l-1.5 4a.5.5 0 0 1-.936-.35l1.5-4a.5.5 0 0 1 .644-.293m3 0a.5.5 0 0 1 .292.643l-1.5 4a.5.5 0 0 1-.936-.35l1.5-4a.5.5 0 0 1 .644-.293m3 0a.5.5 0 0 1 .292.643l-1.5 4a.5.5 0 0 1-.936-.35l1.5-4a.5.5 0 0 1 .644-.293m3 0a.5.5 0 0 1 .292.643l-1.5 4a.5.5 0 0 1-.936-.35l1.5-4a.5.5 0 0 1 .644-.293m.229-7.005a5.001 5.001 0 0 0-9.499-1.004A3.5 3.5 0 1 0 3.5 10H13a3 3 0 0 0 .405-5.973"/>
 </svg>
 }
-<h1 className='shadow'>{weatherData?.weather[0].main}</h1>
-<h3 className='shadow'>{weatherData?.weather[0].description}</h3>
-<h5 className='shadow'>{weatherData.name + " | lat : "+weatherData.coord.lat +" | lon : "+weatherData.coord.lon}</h5>
+<h1 className='shadow'> {weatherData?.weather[0].main}</h1>
+<h3 className='shadow'>{ weatherData?.weather[0].description}</h3>
+<h5 className='shadow'> <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" className="bi bi-geo-alt-fill" viewBox="0 0 16 16">
+  <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6"/>
+</svg> {weatherData.name + " | lat : "+weatherData.coord.lat +" | lon : "+weatherData.coord.lon}</h5>
         </div>
       
         </div>
         <div className='weather-inner-box'>
-          <h6 className='shadow'>{"Temp : "+weatherData.main.temp+" | Min_Temp : "+weatherData.main.temp_min+" | Max_Temp : "+weatherData.main.temp_max}</h6>
-          <h6 className='shadow'>{"Ground Level : "+weatherData.main.grnd_level+" | Sea Level : "+weatherData.main.sea_level}</h6>
-          <h6 className='shadow'>{"Wind Speed : "+weatherData.wind.speed+" | Gust : "+weatherData.wind.gust+" | Deg : "+weatherData.wind.deg}</h6>
+          <h6 className='shadow'>
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" className="bi bi-thermometer-half" viewBox="0 0 16 16">
+  <path d="M9.5 12.5a1.5 1.5 0 1 1-2-1.415V6.5a.5.5 0 0 1 1 0v4.585a1.5 1.5 0 0 1 1 1.415"/>
+  <path d="M5.5 2.5a2.5 2.5 0 0 1 5 0v7.55a3.5 3.5 0 1 1-5 0zM8 1a1.5 1.5 0 0 0-1.5 1.5v7.987l-.167.15a2.5 2.5 0 1 0 3.333 0l-.166-.15V2.5A1.5 1.5 0 0 0 8 1"/>
+</svg>
+            {"Temp : "+weatherData.main.temp+" | Min_Temp : "+weatherData.main.temp_min+" | Max_Temp : "+weatherData.main.temp_max}</h6>
+          <h6 className='shadow'>
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" className="bi bi-water" viewBox="0 0 16 16">
+  <path d="M.036 3.314a.5.5 0 0 1 .65-.278l1.757.703a1.5 1.5 0 0 0 1.114 0l1.014-.406a2.5 2.5 0 0 1 1.857 0l1.015.406a1.5 1.5 0 0 0 1.114 0l1.014-.406a2.5 2.5 0 0 1 1.857 0l1.015.406a1.5 1.5 0 0 0 1.114 0l1.757-.703a.5.5 0 1 1 .372.928l-1.758.703a2.5 2.5 0 0 1-1.857 0l-1.014-.406a1.5 1.5 0 0 0-1.114 0l-1.015.406a2.5 2.5 0 0 1-1.857 0l-1.014-.406a1.5 1.5 0 0 0-1.114 0l-1.015.406a2.5 2.5 0 0 1-1.857 0L.314 3.964a.5.5 0 0 1-.278-.65m0 3a.5.5 0 0 1 .65-.278l1.757.703a1.5 1.5 0 0 0 1.114 0l1.014-.406a2.5 2.5 0 0 1 1.857 0l1.015.406a1.5 1.5 0 0 0 1.114 0l1.014-.406a2.5 2.5 0 0 1 1.857 0l1.015.406a1.5 1.5 0 0 0 1.114 0l1.757-.703a.5.5 0 1 1 .372.928l-1.758.703a2.5 2.5 0 0 1-1.857 0l-1.014-.406a1.5 1.5 0 0 0-1.114 0l-1.015.406a2.5 2.5 0 0 1-1.857 0l-1.014-.406a1.5 1.5 0 0 0-1.114 0l-1.015.406a2.5 2.5 0 0 1-1.857 0L.314 6.964a.5.5 0 0 1-.278-.65m0 3a.5.5 0 0 1 .65-.278l1.757.703a1.5 1.5 0 0 0 1.114 0l1.014-.406a2.5 2.5 0 0 1 1.857 0l1.015.406a1.5 1.5 0 0 0 1.114 0l1.014-.406a2.5 2.5 0 0 1 1.857 0l1.015.406a1.5 1.5 0 0 0 1.114 0l1.757-.703a.5.5 0 1 1 .372.928l-1.758.703a2.5 2.5 0 0 1-1.857 0l-1.014-.406a1.5 1.5 0 0 0-1.114 0l-1.015.406a2.5 2.5 0 0 1-1.857 0l-1.014-.406a1.5 1.5 0 0 0-1.114 0l-1.015.406a2.5 2.5 0 0 1-1.857 0L.314 9.964a.5.5 0 0 1-.278-.65m0 3a.5.5 0 0 1 .65-.278l1.757.703a1.5 1.5 0 0 0 1.114 0l1.014-.406a2.5 2.5 0 0 1 1.857 0l1.015.406a1.5 1.5 0 0 0 1.114 0l1.014-.406a2.5 2.5 0 0 1 1.857 0l1.015.406a1.5 1.5 0 0 0 1.114 0l1.757-.703a.5.5 0 1 1 .372.928l-1.758.703a2.5 2.5 0 0 1-1.857 0l-1.014-.406a1.5 1.5 0 0 0-1.114 0l-1.015.406a2.5 2.5 0 0 1-1.857 0l-1.014-.406a1.5 1.5 0 0 0-1.114 0l-1.015.406a2.5 2.5 0 0 1-1.857 0l-1.757-.703a.5.5 0 0 1-.278-.65"/>
+</svg>   {" Ground Level : "+weatherData.main.grnd_level+" | Sea Level : "+weatherData.main.sea_level}</h6>
+          <h6 className='shadow'>
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" className="bi bi-wind" viewBox="0 0 16 16">
+  <path d="M12.5 2A2.5 2.5 0 0 0 10 4.5a.5.5 0 0 1-1 0A3.5 3.5 0 1 1 12.5 8H.5a.5.5 0 0 1 0-1h12a2.5 2.5 0 0 0 0-5m-7 1a1 1 0 0 0-1 1 .5.5 0 0 1-1 0 2 2 0 1 1 2 2h-5a.5.5 0 0 1 0-1h5a1 1 0 0 0 0-2M0 9.5A.5.5 0 0 1 .5 9h10.042a3 3 0 1 1-3 3 .5.5 0 0 1 1 0 2 2 0 1 0 2-2H.5a.5.5 0 0 1-.5-.5"/>
+</svg>
+            {" Wind Speed : "+weatherData.wind.speed+" | Gust : "+weatherData.wind.gust+" | Deg : "+weatherData.wind.deg}</h6>
            </div>
          </div>
 

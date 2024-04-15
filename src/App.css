@@ -338,6 +338,7 @@ cursor: pointer;
 .shadow{
   text-shadow: 1px 1px 7px gray ,-1px -1px 7px gray;
   font-weight: bolder;
+  color: blue;
 }
 #toggle{
   margin-right: 10px;
